@@ -1,7 +1,7 @@
 # URL Shortener
 
 This project is a URL shortener that allows users to shorten long URLs.
-## Як встановити та запустити проект
+## How to install and run the project
 
 1.  Clone the repository:
 ~~~
