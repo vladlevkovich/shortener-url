@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">URL</th>
+      <th scope="col">Clicks</th>
+    </tr>
+  </thead>
+  {% for link in links %}
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td><a href="{{ url_for('get_url', url_key=link.key) }}">https://{{link.key}}</a></td>
+      <td>{{link.clicks}}</td>
+    </tr>
+  </tbody>
+  {% endfor %}
+</table>
+{% endblock %}

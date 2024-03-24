@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="form-floating mb-3">
+  <form method="post" action="/new">
+    <input type="URL" class="form-control" id="floatingInput" name="orig_url" placeholder="URL">
+    <button class="btn btn-primary" type="submit">Create</button>
+  </form>
+</div>
+{% endblock %}

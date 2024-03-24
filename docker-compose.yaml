@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  app:
+    image: "python:3.11"
+    container_name: url-shortener
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    command: ["bin/app.sh"]
+    working_dir: /app
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    container_name: db
+    image: "postgres:latest"
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: urls
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready", "-d", "intern" ]
+    volumes:
+      - .:/docker-endpoint-initdb.d
+    ports:
+      - "5432:5432"
